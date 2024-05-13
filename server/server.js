@@ -21,6 +21,11 @@ const store = new mongosession({
     collection: "sessions",
 });
 
+const corsOptions = {
+    origin: ["siteurl", "http://localhost:5173"],
+  };
+  
+
 app.use(
     session({
         key: 'uid',
@@ -39,6 +44,8 @@ app.use(
 
 
 // add routes
+
+app.use(cors(corsOptions));
 
 
 app.get('/logout', (req,res) => {
