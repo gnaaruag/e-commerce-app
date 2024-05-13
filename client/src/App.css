@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'font-primary';
+  src: url('../Americana.otf') ;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'QuattrocentoSans-reg';
+  src: url('../QuattrocentoSans-Regular.ttf') ;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'QuattrocentoSans-bold-ital';
+  src: url('../QuattrocentoSans-BoldItalic.ttf') ;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'QuattrocentoSans-ital';
+  src: url('../QuattrocentoSans-Italic.ttf') ;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ft-primary {
+  font-family: 'font-primary', serif;
+}
+
+.ft-sec-reg {
+  font-family: 'QuattrocentoSans-reg', serif;
+}
+
+.ft-sec-boldital {
+  font-family: 'QuattrocentoSans-bold-ital', serif;
+}
+
+.ft-sec-ital {
+  font-family: 'QuattrocentoSans-ital', serif;
+}
+
+.txt-primary {
+  color: #dd1d1d;
+}
+
+.txt-secondary {
+  color: #e65656;
+}
+
+.txt-ternary {
+  color: #505655;
+}
+
