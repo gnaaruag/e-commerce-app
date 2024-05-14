@@ -24,20 +24,12 @@ function Navbar() {
       </a>
       <nav ref={navRef} className="ft-sec-reg">
         <div className="links">
-          <a href="/#">Saree</a>
-          <a href="/#">Lehenga</a>
-          <a href="/#">Kurtas for her</a>
-          <a href="/#">Kurtas for him</a>
-          <a href="/#">{"Men's gift set"}</a>
-          <a href="/#" className="hidden-links">
-            Search
-          </a>
-          <a href="/#" className="hidden-links">
-            Profile
-          </a>
-          <a href="/#" className="hidden-links">
-            Cart
-          </a>
+          <a href="/collections/saree">Saree</a>
+          <a href="/collections/lehenga">Lehenga</a>
+          <a href="/collections/kurtas-for-her">Kurtas for her</a>
+          <a href="/collections/kurtas-for-him">Kurtas for him</a>
+          <a href="/collections/gift-sets">{"Men's gift set"}</a>
+          
         </div>
 
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
@@ -46,9 +38,9 @@ function Navbar() {
       </nav>
 
       <div className="icons">
-        <CiUser className="txt-secondary icon" size={25} />
-        <CiSearch className="txt-secondary " size={25} />
-        <CiShoppingCart className="txt-secondary icon" size={25} />
+        <a href="/profile"><CiUser className="txt-secondary icon" size={25} /></a>
+        <a href="/search"><CiSearch className="txt-secondary icon " size={25} /></a>
+        <a href="/cart"><CiShoppingCart className="txt-secondary icon" size={25} /></a>
       </div>
     </header>
   );

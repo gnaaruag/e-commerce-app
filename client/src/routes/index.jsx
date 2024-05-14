@@ -5,6 +5,12 @@ import Home from "../pages/home";
 import PageLayout from "../layout";
 import LoginForm from "../pages/signin";
 import SignupForm from "../pages/signup";
+import Saree from "../pages/collections/saree"
+import Lehenga from "../pages/collections/lehenga"
+import KurtasM from "../pages/collections/kurtasm"
+import KurtasFM from "../pages/collections/kurtasfm"
+import GiftSet from "../pages/collections/giftset"
+
 
 const router = createBrowserRouter([
     
@@ -26,6 +32,35 @@ const router = createBrowserRouter([
             {
                 path: "/signin",
                 element: <LoginForm/>
+            },
+        ]
+    },
+    {
+        path: "/collections",
+        element: (
+            <PageLayout/>
+        ),
+        ErrorBoundary: () => <>Failed to load the page</>,
+        children: [
+            {
+                path: "saree",
+                element: <Saree/>
+            },
+            {
+                path: "lehenga",
+                element: <Lehenga/>
+            },
+            {
+                path: "kurtas-for-her",
+                element: <KurtasFM/>
+            },
+            {
+                path: "kurtas-for-him",
+                element: <KurtasM/>
+            },
+            {
+                path: "gift-sets",
+                element: <GiftSet/>
             },
         ]
     },
