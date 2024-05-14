@@ -1,0 +1,64 @@
+.coll-comp {
+	display: flex;
+	gap: 4em;
+  }
+  
+  .col1,
+  .col2 {
+	flex: 1; /* Both columns take equal parts of the available space */
+	display: flex;
+	flex-direction: column;
+	
+  }
+
+  p {
+	display: flex;
+	align-items: center;
+  }
+  
+  .bi1 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  }
+  .b-item {
+	flex: 1; /* Each item takes equal space vertically */
+	
+	margin-bottom: 10px; /* Adjust the spacing between items */
+	
+  }
+  
+  /* Limiting the size of items and images */
+  .b-item a {
+	text-decoration: none;
+	color: #dd1d1d;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 3px solid #fef5f5;
+	padding: 0.5em;
+	border-radius: 1em;
+  }
+  
+  .b-item img {
+	max-width: 25em; /* Adjust the maximum width of the image */
+	max-height: 30em; /* Adjust the maximum height of the image */
+	border-radius: 2em;
+	transition: transform 0.3s;
+  }
+
+  .b-item img:hover {
+	transform: scale(1.02);
+  }
+
+  
+  @media only screen and (max-width: 1024px) {
+	.coll-comp {
+		flex-direction: column;
+	}
+	.b-item img {
+		max-width: 15em; /* Adjust the maximum width of the image */
+		max-height: 20em; /* Adjust the maximum height of the image */
+	  }
+}
