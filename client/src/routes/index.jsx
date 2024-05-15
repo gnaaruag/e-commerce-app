@@ -10,6 +10,7 @@ import Lehenga from "../pages/collections/lehenga"
 import KurtasM from "../pages/collections/kurtasm"
 import KurtasFM from "../pages/collections/kurtasfm"
 import GiftSet from "../pages/collections/giftset"
+import PrivacyPolicy from "../pages/privacy-policy";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: "/signin",
                 element: <LoginForm/>
+            },
+            {
+                path: "/privacy-policy",
+                element: <PrivacyPolicy/>
             },
         ]
     },

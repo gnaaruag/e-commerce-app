@@ -25,6 +25,15 @@
 	align-items: center;
 }
 
+.sectionpop {
+	background: rgb(221, 30, 30);
+	background: linear-gradient(90deg, rgba(221, 30, 30, 1) 0%, rgba(221, 30, 30, 1) 9%, rgba(249, 190, 74, 1) 100%);
+	padding: 1.5em 0;
+}
+
+.pophead {
+	color: white;
+}
 .cta {
 	padding: 1em;
 	border: none;

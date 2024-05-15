@@ -1,0 +1,56 @@
+.links-ft {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+	border-top: 2px solid #ffefef;
+	padding-top: 1em;
+}
+
+.links-ft a {
+	text-decoration: none;
+	color: #e65656;
+}
+
+.links-ft a:hover {
+	text-decoration: underline;
+	color: #e65656;
+}
+
+.socials {
+	margin-top: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+	padding-bottom: 1em;
+	border-bottom: 2px solid #ffefef;
+}
+
+
+.pay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+	color: #e65656;
+}
+br {
+	height: 5px;
+	color: #fef6f6;
+}
+
+.cred {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.8em;
+	margin: 1em 1em;
+	gap: 0.5em;
+	color: #e65656;
+	flex-wrap: wrap;
+}
+
+.cred a {
+	color: #e65656;
+}

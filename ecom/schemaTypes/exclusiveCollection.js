@@ -1,9 +1,6 @@
-// popularThisMonth schema
-// popularThisMonthSchema.js
-
 export default {
-	name: 'popularThisMonth',
-	title: 'Popular This Month',
+	name: 'exclusiveCollection',
+	title: 'Exclusive Collection',
 	type: 'document',
 	fields: [
 	  {

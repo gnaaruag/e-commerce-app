@@ -1,0 +1,10 @@
+.product-item {
+	display: flex;
+}
+.product-pp {
+	background-color: white;
+	color: #e65656;
+	border-radius: 1em;
+	border: 2px solid #fbe7e7;
+
+}

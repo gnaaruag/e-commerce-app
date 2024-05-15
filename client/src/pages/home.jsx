@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import Card from "../components/category-card";
 import BrowseCollection from "../components/browse-collection";
 import PopularThisMonth from "../components/popular-this-month";
+import ExclusiveCollection from "../components/exclusive-collection";
 function Home() {
   return (
     <>
@@ -40,12 +41,13 @@ function Home() {
         </p>
         <BrowseCollection/>
       </div>
-      <div className="txt-primary ft-primary section">
-        <h3>Popular this Month</h3>
+      <div className="txt-primary ft-primary section sectionpop">
+        <h2 className="pophead">Popular this Month</h2>
         <PopularThisMonth/>
       </div>
-      <div className="txt-primary ft-primary section">
-        <h3>Explore our Exclusive Collection</h3>
+      <div className="txt-primary ft-primary section ">
+        <h2 className="">Explore our Exclusive Collection</h2>
+        <ExclusiveCollection/>
       </div>
     </>
   );

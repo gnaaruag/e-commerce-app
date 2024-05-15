@@ -1,5 +1,5 @@
-import "../App.css"
-import "../styles/browsecollection.css"
+import "../App.css";
+import "../styles/browsecollection.css";
 import { FaArrowRight } from "react-icons/fa6";
 
 function BrowseCollection() {
@@ -9,8 +9,9 @@ function BrowseCollection() {
         <div className="b-item bi1">
           <a href="/collections/bridal">
             <img src="/Lehenga_saree.webp" alt="" />
-            <p>Bridal Wear <FaArrowRight />
-</p>
+            <p>
+              Bridal Wear <FaArrowRight />
+            </p>
           </a>
         </div>
       </div>
@@ -18,15 +19,17 @@ function BrowseCollection() {
         <div className="b-item ">
           <a href="/collections/partywear">
             <img src="/partywear.webp" alt="" />
-            <p>Party wear <FaArrowRight />
-</p>
+            <p>
+              Party wear <FaArrowRight />
+            </p>
           </a>
         </div>
         <div className="b-item ">
           <a href="/collections/everyday">
             <img src="/DSC_1607.webp" alt="" />
-            <p>Everyday <FaArrowRight />
-</p>
+            <p>
+              Everyday <FaArrowRight />
+            </p>
           </a>
         </div>
       </div>

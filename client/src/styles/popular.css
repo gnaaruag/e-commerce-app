@@ -1,0 +1,38 @@
+.productitem {
+	display: flex;
+	gap: 1em;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+.productitem img {
+	width: 15em;
+	height: 20em;
+	border-radius: 1em 1em 0 0;
+}
+
+.product-pop {
+	background-color: #480a0a;
+	color: white;
+	border-radius: 1em;
+
+}
+
+.prod-desc {
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.prod-desc a {
+	text-decoration: none;
+	color: #fabf4b;
+}
+
+.prod-desc a:hover {
+	text-decoration: underline;
+}

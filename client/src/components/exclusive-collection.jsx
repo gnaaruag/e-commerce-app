@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
 import createClient from "../client";
 import "../App.css";
-import "../styles/popular.css";
+import "../styles/exclusive.css";
 import { FaArrowRight } from "react-icons/fa6";
 
 
-function PopularThisMonth() {
+function ExclusiveCollection() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchPopularProducts = async () => {
       try {
-        // Fetch popular products data from Sanity along with referenced product details
         const data = await createClient.fetch(`
-          *[_type == 'popularThisMonth'] {
+          *[_type == 'exclusiveCollection'] {
             productName,
             "product": *[_id == ^.product._ref][0] {
               productName,
               mainImage,
               price,
-			  productId
+              productId
             }
           }
         `);
@@ -32,7 +31,6 @@ function PopularThisMonth() {
               product.mainImage.asset &&
               product.mainImage.asset._ref
             ) {
-              // Fetch the referenced asset to get the URL
               const assetData = await createClient.fetch(
                 `*[_id == '${product.mainImage.asset._ref}']{url}`
               );
@@ -46,19 +44,18 @@ function PopularThisMonth() {
 
         setProducts(formattedProducts.filter((product) => product.mainImage));
       } catch (error) {
-        console.error("Error fetching popular products:", error);
+        console.error("Error fetching exclusive collection:", error);
       }
     };
 
     fetchPopularProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="productscontainer">
-      <div className="productitem">
+    <div className="">
+      <div className="productitem"> {/* Corrected class name to "product-item" */}
         {products.map((product, index) => (
-          <div key={index} className="product-pop">
+          <div key={index} className="product-pp">
             <img src={product.mainImage} alt={product.productName} />
             <div className="prod-desc">
               <h3>{product.productName}</h3>
@@ -71,4 +68,4 @@ function PopularThisMonth() {
   );
 }
 
-export default PopularThisMonth;
+export default ExclusiveCollection;

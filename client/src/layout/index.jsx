@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/navbar";
 import OfferCard from "../components/offer-card";
+import Footer from "../components/footer";
 const PageLayout = () => {
   return (
     <>
@@ -11,6 +12,7 @@ const PageLayout = () => {
           <Outlet />
         </div>
       </main>
+      <Footer/>
     </>
   );
 };
