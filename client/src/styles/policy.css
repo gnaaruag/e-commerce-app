@@ -1,0 +1,25 @@
+.m-container{
+	margin: 2em 10em;
+}
+
+.m-container p li{
+	font-size: 1.2em;
+}
+
+li {
+	margin-top: 1em;
+}
+
+a {
+	color: gray;
+}
+
+a:hover {
+	text-decoration-thickness: 0.15em;
+}
+
+@media only screen and (max-width: 650px) {
+	.m-container{
+		margin: 2em 1em;
+	}
+}

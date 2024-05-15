@@ -11,6 +11,8 @@ import KurtasM from "../pages/collections/kurtasm"
 import KurtasFM from "../pages/collections/kurtasfm"
 import GiftSet from "../pages/collections/giftset"
 import PrivacyPolicy from "../pages/privacy-policy";
+import TermsOfService from "../pages/terms-of-service";
+import Contact from "../pages/contact";
 
 
 const router = createBrowserRouter([
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
             {
                 path: "/privacy-policy",
                 element: <PrivacyPolicy/>
+            },
+            {
+                path: "/returns-refunds",
+                element: <TermsOfService/>
+            },
+            {
+                path: "/contact",
+                element: <Contact/>
             },
         ]
     },

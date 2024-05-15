@@ -13,7 +13,7 @@ function Footer() {
       <div className="links-ft ft-sec-reg ">
         <a href="/search">Search</a>
         <a href="/contact">Contact</a>
-        <a href="/search">Terms of Service</a>
+        <a href="/returns-refunds">Terms of Service</a>
         <a href="/privacy-policy">Privacy Policy</a>
       </div>
       <div className="socials">

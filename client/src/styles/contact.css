@@ -1,0 +1,14 @@
+.contact-c {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	margin-top: 5em;
+
+}
+
+.c-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
