@@ -13,6 +13,8 @@ import GiftSet from "../pages/collections/giftset"
 import PrivacyPolicy from "../pages/privacy-policy";
 import TermsOfService from "../pages/terms-of-service";
 import Contact from "../pages/contact";
+import Search from "../pages/search";
+import ProductItem from "../pages/product-item";
 
 
 const router = createBrowserRouter([
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
                 path: "/contact",
                 element: <Contact/>
             },
+            {
+                path: "/search",
+                element: <Search/>
+            },
         ]
     },
     {
@@ -77,6 +83,19 @@ const router = createBrowserRouter([
                 path: "gift-sets",
                 element: <GiftSet/>
             },
+        ]
+    },
+    {
+        path: "/product",
+        element: (
+            <PageLayout/>
+        ),
+        children: [
+            {
+                path: ":productId",
+                element: <ProductItem/>
+            },
+            
         ]
     },
     // {

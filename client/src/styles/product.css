@@ -1,0 +1,163 @@
+.alts img {
+	height: 10em;
+	width: 8em;
+}
+
+.main-prod {
+	height: 30em;
+	width: 22em;
+}
+
+.altimgs img {
+	height: 15em;
+	width: 12em;
+}
+
+.altimgs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1em;
+	margin-top: 1em;
+}
+
+img {
+	border-radius: 0.5em
+}
+
+.prod-cols {
+	display: flex;
+	justify-content: center;
+	margin: 3em 4em;
+}
+
+.col1 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 1em 8em;
+}
+
+.brand {
+	text-align: start;
+}
+
+.col2 {
+	display: flex;
+	flex-direction: column;
+	align-items: self-start;
+	margin: 1em 8em;
+}
+
+.price {
+	font-size: 1.2em;
+}
+
+.actions {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin: 1em 0;
+}
+
+.actions button {
+	border-radius: 0.25em;
+
+}
+
+
+.cart {
+	border: 2px solid black;
+	width: 100%;
+	margin: 0.25em 0;
+	font-size: 1.1em;
+	padding: 0.75em;
+}
+
+.buy {
+	border: 1px solid #e65656;
+	width: 100%;
+	margin: 0.25em 0;
+	background-color: #dd1d1d;
+	color: white;
+	margin: 1em 0;
+	font-size: 1.1em;
+	padding: 0.75em;
+}
+
+.cart:hover {
+	text-decoration: underline;
+}
+
+.buy:hover {
+	text-decoration: underline;
+}
+
+.sh-button {
+	display: flex;
+	align-items: center;
+
+}
+
+.s-icon {
+	font-size: 1.5em;
+	padding: 0.5em;
+	border-radius: 10%;
+}
+
+.s-icon:hover {
+	background-color: #d5d5d5;
+}
+
+@font-face {
+	font-family: 'toast';
+	src: url('../QuattrocentoSans-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@media only screen and (max-width: 786px) {
+	.prod-cols {
+		flex-direction: column;
+	}
+
+	.altimgs img {
+		height: 10em;
+		width: 7em;
+	}
+
+}
+
+@media only screen and (max-width: 600px) {
+	.col1{
+		margin: 1em 2em;
+	}
+	.col2{
+		margin: 1em 2em;
+	}
+
+	.prod-cols {
+		margin: 0 0;
+	}
+}
+
+@media only screen and (max-width: 350px) {
+	.col1{
+		margin: 0 0;
+	}
+	.col2{
+		margin: 0 0;
+	}
+
+	.prod-cols {
+		margin: 0 0;
+	}
+
+	.main-prod {
+		height: 20em;
+		width: 15em;
+	}
+}

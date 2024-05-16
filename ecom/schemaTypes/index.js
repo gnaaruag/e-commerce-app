@@ -7,6 +7,5 @@ import exclusiveCollection from './exclusiveCollection'
 export const schemaTypes = [
 	offerCard, 
 	product,
-	productCategory,
 	popularThisMonth,
 	exclusiveCollection]
