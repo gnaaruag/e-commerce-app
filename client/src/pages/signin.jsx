@@ -1,30 +1,38 @@
-import  { useState } from 'react';
-import "../App.css"
-import "../styles/login.css"
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate=useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://your-api-endpoint.com/login', {
+      const response = await fetch(`${import.meta.env.VITE_API_ROUTE}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
       });
+      const data = await response.json();
+
+      console.log(data)
       if (response.ok) {
         // Handle successful login
-        console.log('Login successful!');
+        toast.success(data.message);
+        console.log(response.sessionId)
+        localStorage.setItem('sessionId', data.sessionId);
+        localStorage.setItem('userEmail', email); // Store user emai\
+        navigate("/profile")
       } else {
         // Handle login error
-        console.error('Login failed!');
+        toast.error(data.message);
       }
     } catch (error) {
       console.error('Error:', error);
+      toast.error('An error occurred. Please try again.');
     }
   };
 
@@ -37,9 +45,9 @@ function LoginForm() {
             type="email"
             id="email"
             name="email"
-			className='ft-sec-reg fields'
+            className='ft-sec-reg fields'
             value={email}
-			placeholder='Email'
+            placeholder='Email'
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -49,8 +57,8 @@ function LoginForm() {
             type="password"
             id="password"
             name="password"
-			className='ft-sec-reg fields'
-			placeholder='Password'
+            className='ft-sec-reg fields'
+            placeholder='Password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

@@ -1,37 +1,45 @@
-import  { useState } from 'react';
+import { useState } from 'react';
+import { toast, Toaster } from 'react-hot-toast';
 import "../App.css"
 import "../styles/login.css"
+import { useNavigate } from "react-router-dom"
 
 function SignupForm() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://your-api-endpoint.com/signup', {
+      const response = await fetch(`${import.meta.env.VITE_API_ROUTE}/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ firstName, lastName, email, password }),
+        body: JSON.stringify({ name: firstName + " " + lastName, email: email, password: password }),
       });
       if (response.ok) {
         // Handle successful signup
-        console.log('Signup successful!');
+        console.log('uuu')
+        toast.success('Signup successful!');
+        navigate("/signin")
+        
       } else {
         // Handle signup error
-        console.error('Signup failed!');
+        toast.error('Signup failed!');
       }
     } catch (error) {
       console.error('Error:', error);
+      toast.error('Signup failed!');
     }
   };
 
   return (
     <div className="container">
+      <Toaster/>
       <h2 className='header txt-primary ft-primary'>Signup</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -83,7 +91,7 @@ function SignupForm() {
           />
         </div>
         <div className="form-group">
-          <input type="submit" value="Signup" className='btn'/>
+          <button onClick={handleSubmit}  className='btn'>Signup</button>
         </div>
       </form>
       <div className="create-account-link ft-sec-reg txt-ternary" >

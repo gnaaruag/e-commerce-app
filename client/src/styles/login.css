@@ -50,3 +50,13 @@
 .link:hover {
 	border-bottom: 3px solid #505655;
 }
+
+@media only screen and (max-width: 1024px) {
+	.fields {
+		min-width: 200px;
+		
+	}
+	.btn {
+		margin-left: 5em;
+	}
+}

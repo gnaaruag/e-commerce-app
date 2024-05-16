@@ -3,6 +3,10 @@ const bcrypt = require("bcrypt");
 
 const onboardUser = async (req, res) => {
   console.log(req.body);
+  const existingUser = await User.findOne({ email: req.body.email });
+  if (existingUser) {
+    return res.status(400).send("User with this email already exists");
+  }
   const hashed = await bcrypt.hash(req.body.password, 10);
 
   console.log(hashed);
@@ -16,56 +20,63 @@ const onboardUser = async (req, res) => {
   await data
     .save()
     .then(() => {
+      res.status(200).send("OK");
       console.log("Data saved");
     })
     .catch((error) => {
-      console.log("Error:", error);
+      res.status(500).send("Internal Server Error");
     });
-
-  res.redirect("login");
 };
 
 const verifyLogin = async (req, res) => {
-  
-	const mail = req.body.email;
-	const password = req.body.password;
+	const { email, password } = req.body;
   
 	try {
-	  const user = await User.findOne({ email: mail });
+	  // Find the user by email
+	  const user = await User.findOne({ email });
   
 	  if (!user) {
-		// Handle invalid email case securely (avoid info leakage)
-		res.status(401).json({ message: "Invalid credentials" });
-		return;
+		// If user is not found, respond with invalid credentials
+		return res.status(401).json({ message: "Invalid credentials" });
 	  }
   
+	  // Compare the provided password with the stored hashed password
 	  const isMatch = await bcrypt.compare(password, user.password);
   
 	  if (!isMatch) {
-		res.status(401).json({ message: "Invalid credentials" });
-		return;
+		// If passwords do not match, respond with invalid credentials
+		return res.status(401).json({ message: "Invalid credentials" });
 	  }
   
-	  // Secure session management (avoid session ID exposure)
+	  // Regenerate session to prevent session fixation
 	  req.session.regenerate((err) => {
 		if (err) {
-		  console.error(err);
-		  res.status(500).json({ message: "Internal server error" });
-		  return;
+		  console.error("Session regeneration error:", err);
+		  return res.status(500).json({ message: "Internal server error" });
 		}
   
-		req.session.user = req.sessionID; // Store user ID for later retrieval
-		res.cookie('sessionId', req.sessionID, {
-			httpOnly: true, // Prevent client-side JavaScript access
-			secure: true,   // Only transmit over HTTPS (if applicable)
-			maxAge: 1000 * 60 * 60 * 24, // Set expiration (e.g., 1 day)
-		  });
-		res.status(200).json({ message: "Login successful" });
+		// Store user ID in session for later retrieval
+		req.session.userId = user._id;
+  
+		// Get the session ID
+		const sessionId = req.sessionID;
+  
+		// Set the session ID in an HTTP-only and secure cookie
+		res.cookie("sessionId", sessionId, {
+		  httpOnly: true,
+		  secure: true,
+		  maxAge: 1000 * 60 * 60 * 24, // 1 day
+		});
+  
+		// Respond with success message and session ID
+		return res.status(200).json({ message: "Login successful", sessionId });
 	  });
 	} catch (error) {
-	  console.error(error);
-	  res.status(500).json({ message: "Internal server error" });
+	  console.error("Login error:", error);
+	  return res.status(500).json({ message: "Internal server error" });
 	}
   };
   
-module.exports = {  onboardUser, verifyLogin };
+  
+
+module.exports = { onboardUser, verifyLogin };

@@ -28,3 +28,18 @@
 .coll-item-desc {
 	padding: 1em;
 }
+
+.pagination {
+	display: flex;
+	align-items: center;
+}
+
+.pag-comp {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.curr-page {
+	text-decoration: underline;
+}
