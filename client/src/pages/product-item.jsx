@@ -4,6 +4,7 @@ import createClient from "../client";
 import "../App.css";
 import "../styles/product.css";
 import QuantitySelector from "../components/quantity-selector";
+import Loading from "../components/loading";
 import {
   EmailShareButton,
   TwitterShareButton,
@@ -192,7 +193,7 @@ const ProductItem = () => {
           </div>
         </div>
       ) : (
-        <p>Loading...</p>
+        <Loading/>
       )}
     </div>
   );

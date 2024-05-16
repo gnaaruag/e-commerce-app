@@ -1,0 +1,30 @@
+.collitems {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 3em;
+	justify-content: center;
+	align-items: center;
+}
+
+.coll-item img {
+	width: 15em;
+	height: 18em;
+
+
+}
+.coll-item {
+	margin: 1em;
+	border: 1px solid #fce8e8;
+}
+
+.coll-item a {
+	text-decoration: none;
+}
+
+.coll-item h3 {
+	text-decoration: underline;
+}
+
+.coll-item-desc {
+	padding: 1em;
+}

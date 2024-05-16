@@ -1,6 +1,5 @@
 import "../App.css";
 import "../styles/home.css";
-import { FaArrowRight } from "react-icons/fa6";
 import Card from "../components/category-card";
 import BrowseCollection from "../components/browse-collection";
 import PopularThisMonth from "../components/popular-this-month";
@@ -16,9 +15,9 @@ function Home() {
           Shop for Exclusive Traditional Attire with Ease!
         </p>
         <a href="#categories" className="cta-grp">
-          <button className="cta ft-primary">
+          {/* <button className="cta ft-primary">
             View Products <FaArrowRight />
-          </button>
+          </button> */}
         </a>
       </div>
 

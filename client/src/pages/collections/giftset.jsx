@@ -2,10 +2,12 @@ import "../../App.css";
 import "../../styles/collections.css";
 import FilterSort from '../../components/filter-sort'; // Import the FilterSort component
 import { useState } from "react";
+import DisplayCollection from "../../components/display-collection"
+
 
 
 function GiftSet() {
-  const [filterData, setFilterData] = useState(null); // State to store filter data
+  const [filterData, setFilterData] = useState({minPrice: 0, maxPrice:100000, sortCriteria: "price_low_to_high"}); // State to store filter data
 
   // Function to handle filter change
   const handleFilterChange = (data) => {
@@ -21,16 +23,9 @@ function GiftSet() {
       </p>
       <FilterSort onFilterChange={handleFilterChange} />
       
-      {/* Render sarees based on the filterData received */}
-      {/* Example: */}
-      {filterData && (
-        <div>
-          Filtered Data:
-          <p>Price: {filterData.price}</p>
-          <p>Availability: {filterData.availability}</p>
-          <p>Sort Criteria: {filterData.sortCriteria}</p>
-        </div>
-      )}
+  
+      
+      <DisplayCollection collection="giftset" minPrice={filterData.minPrice} maxPrice={filterData.maxPrice} sortCriteria={filterData.sortCriteria}/>
     </div>
   );
   }
