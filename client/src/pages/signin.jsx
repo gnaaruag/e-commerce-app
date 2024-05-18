@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -18,14 +19,13 @@ function LoginForm() {
       });
       const data = await response.json();
 
-      console.log(data)
       if (response.ok) {
         // Handle successful login
         toast.success(data.message);
-        console.log(response.sessionId)
-        localStorage.setItem('sessionId', data.sessionId);
-        localStorage.setItem('userEmail', email); // Store user emai\
-        navigate("/profile")
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userEmail', data.user.email); // Store user email
+        localStorage.setItem('userName', data.user.username);
+        navigate("/profile");
       } else {
         // Handle login error
         toast.error(data.message);
@@ -39,7 +39,7 @@ function LoginForm() {
   return (
     <div className="container">
       <h2 className='header txt-primary ft-primary'>Login</h2>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
             type="email"
@@ -65,10 +65,10 @@ function LoginForm() {
           />
         </div>
         <div className="form-group">
-          <input type="submit" value="Login" className='btn'/>
+          <input type="submit" value="Login" className='btn' />
         </div>
       </form>
-      <div className="create-account-link ft-sec-reg txt-ternary" >
+      <div className="create-account-link ft-sec-reg txt-ternary">
         <p><a className="link" href="/signup">Create account</a></p>
       </div>
     </div>

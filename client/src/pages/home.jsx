@@ -26,9 +26,9 @@ function Home() {
         <div className="category-cards">
           <Card imageSrc="/ds2.jpeg" title="Sarees" link="/collections/saree" />
           <Card imageSrc="/ds3.jpeg" title="Lehengas" link="/collections/lehenga" />
-          <Card imageSrc="/ds4.jpeg" title="Kurtas for Her" link="/collections/kurtas-for-her" />
-          <Card imageSrc="/ds5.jpeg" title="Kurtas for Him" link="/collections/kurtas-for-him" />
-          <Card imageSrc="/ds6.jpeg" title="Gift Sets" link="/collections/gift-sets" />
+          <Card imageSrc="/ds6.jpeg" title="Kurtas for Her" link="/collections/kurtas-for-her" />
+          <Card imageSrc="/ds4.jpeg" title="Kurtas for Him" link="/collections/kurtas-for-him" />
+          <Card imageSrc="/ds5.jpeg" title="Gift Sets" link="/collections/gift-sets" />
         </div>
       </div>
       <div className="txt-primary ft-primary section">

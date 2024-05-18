@@ -5,8 +5,8 @@ import { FaPlus, FaMinus } from "react-icons/fa6";
 
 
 // eslint-disable-next-line react/prop-types
-const QuantitySelector = ({ onQuantityChange }) => {
-  const [quantity, setQuantity] = useState(1);
+const QuantitySelector = ({ onQuantityChange, initialQuantity }) => {
+  const [quantity, setQuantity] = useState(initialQuantity || 1);
 
   const handleIncrement = () => {
     setQuantity(prevQuantity => prevQuantity + 1);

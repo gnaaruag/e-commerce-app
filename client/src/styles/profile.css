@@ -1,0 +1,33 @@
+.logout {
+	display: flex;
+	align-items: center;
+	text-decoration: underline;
+}
+
+.logout:hover{
+	text-decoration-thickness: 0.12em;
+}
+
+.profile-container {
+	display: flex;
+	margin-top: 2em;
+	justify-content: space-around;
+
+}
+
+.prfile h1 {
+	margin-left: 6em; 
+}
+
+@media only screen and (max-width: 750px) {
+	.prfile h1 {
+		margin-left: 1em; 
+	}
+
+	.profile-container {
+		flex-direction: column;
+		justify-content: center;
+		align-items: first baseline;
+		margin-left: 3em
+	}
+}

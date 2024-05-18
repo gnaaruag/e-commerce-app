@@ -19,7 +19,7 @@ function SignupForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: firstName + " " + lastName, email: email, password: password }),
+        body: JSON.stringify({ username: firstName + " " + lastName, email: email, password: password }),
       });
       if (response.ok) {
         // Handle successful signup

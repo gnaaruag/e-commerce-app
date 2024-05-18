@@ -1,17 +1,11 @@
-import PropTypes from 'prop-types';
 import { Navigate } from "react-router-dom";
 
-function ProtectedRoute({ children }) {
-  const authenticated = !!localStorage.getItem("authToken");
+// eslint-disable-next-line react/prop-types
+export default function ProtectedRoute({ children }) {
+  const authenticated = !!localStorage.getItem("token");
   if (authenticated) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-  }
+    return <Navigate to="/signin" />;
+ }
 }
-
-ProtectedRoute.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default ProtectedRoute;

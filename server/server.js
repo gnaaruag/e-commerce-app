@@ -22,7 +22,8 @@ const store = new mongosession({
 });
 
 const corsOptions = {
-    origin: ["siteurl", "http://localhost:5173"],
+    origin: 'http://localhost:5173', // Replace with your Vite development server's address
+  credentials: true
   };
   
 
@@ -59,9 +60,11 @@ app.get('/logout', (req,res) => {
 
 
 const auth = require('./routes/auth.route.js');
+const cart = require("./routes/cart.route.js")
 
 
 app.use('/',auth);
+app.use('/', cart);
 
 
 
