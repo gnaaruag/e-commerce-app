@@ -22,6 +22,10 @@ nav a {
 	text-decoration: none;
 }
 
+svg {
+	margin: 0;
+}
+
 nav a:hover {
 	text-decoration: underline;
 }

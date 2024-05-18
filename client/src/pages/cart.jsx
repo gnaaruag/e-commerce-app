@@ -259,7 +259,7 @@ const Cart = () => {
               </div>
             ))
           ) : (
-            <p>Your cart is empty.</p>
+            <p className="empty">Your cart is empty.</p>
           )}
         </div>
       )}
