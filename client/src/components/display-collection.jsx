@@ -88,7 +88,7 @@ function DisplayCollection({ collection, minPrice, maxPrice, sortCriteria }) {
             onClick={() => paginate(page)}
             className={
               currentPage === page
-                ? "active curr-page ft-sec-reg txt-secondary" // Add 'curr-page' class for the current page
+                ? "active curr-page ft-sec-reg txt-secondary" 
                 : "ft-sec-reg txt-secondary"
             }
           >

@@ -11,7 +11,6 @@ function PopularThisMonth() {
   useEffect(() => {
     const fetchPopularProducts = async () => {
       try {
-        // Fetch popular products data from Sanity along with referenced product details
         const data = await createClient.fetch(`
           *[_type == 'popularThisMonth'] {
             productName,
@@ -32,7 +31,6 @@ function PopularThisMonth() {
               product.mainImage.asset &&
               product.mainImage.asset._ref
             ) {
-              // Fetch the referenced asset to get the URL
               const assetData = await createClient.fetch(
                 `*[_id == '${product.mainImage.asset._ref}']{url}`
               );
@@ -51,7 +49,6 @@ function PopularThisMonth() {
     };
 
     fetchPopularProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

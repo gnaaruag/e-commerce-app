@@ -1,6 +1,5 @@
 import { createClient } from '@sanity/client'
 
-// Access the environment variable
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID
 
 export default createClient({

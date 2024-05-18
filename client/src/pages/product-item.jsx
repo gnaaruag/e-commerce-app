@@ -85,7 +85,6 @@ const ProductItem = () => {
     const fetchProduct = async () => {
       try {
         const data = await createClient.fetch(groqQuery);
-        console.log(data);
         setProduct(data);
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -103,7 +102,6 @@ const ProductItem = () => {
   const handleAddToCart = async () => {
     const email = localStorage.getItem("userEmail");
     const token = localStorage.getItem("token");
-    console.log(email,token)
 
     if (!email) {
       toast.error("User email not found in localStorage");
@@ -152,7 +150,7 @@ const ProductItem = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ products: [product], userEmail }), // Sending a single product as an array
+          body: JSON.stringify({ products: [product], userEmail }),  
         }
       );
 

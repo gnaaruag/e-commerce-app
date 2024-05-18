@@ -33,7 +33,6 @@ const checkOut = async (req, res) => {
       cancel_url: `${process.env.CLIENT_URL}/cancel`,
     });
 
-    // Assuming products is an array of objects containing productId and quantity
     for (const product of products) {
       const orderItem = new Order({
         userEmail: userEmail,
@@ -44,7 +43,6 @@ const checkOut = async (req, res) => {
       await orderItem.save();
     }
 
-    // Delete items from the cart after successful order
     await Cart.deleteMany({ userEmail: userEmail });
 
     res.json({ id: session.id });

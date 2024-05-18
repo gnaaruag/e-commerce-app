@@ -22,13 +22,10 @@ function SignupForm() {
         body: JSON.stringify({ username: firstName + " " + lastName, email: email, password: password }),
       });
       if (response.ok) {
-        // Handle successful signup
-        console.log('uuu')
         toast.success('Signup successful!');
         navigate("/signin")
         
       } else {
-        // Handle signup error
         toast.error('Signup failed!');
       }
     } catch (error) {

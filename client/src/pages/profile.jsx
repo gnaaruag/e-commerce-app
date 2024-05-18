@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { CiUser } from "react-icons/ci";
 
 function Profile() {
-  // Check if token exists in localStorage
   const navigate = useNavigate();
   useEffect(() => {
     const checkToken = async () => {
@@ -31,7 +30,6 @@ function Profile() {
   const email = localStorage.getItem("userEmail");
   const username = localStorage.getItem("userName")
 
-  // If token exists, render Profile component, else redirect to login page
   return (
     <div className="ft-primary txt-primary">
       <div className="prfile">

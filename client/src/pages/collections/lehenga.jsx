@@ -9,7 +9,6 @@ function Lehenga() {
 
   const [filterData, setFilterData] = useState({minPrice: 0, maxPrice:100000, sortCriteria: "price_low_to_high"}); // State to store filter data
 
-  // Function to handle filter change
   const handleFilterChange = (data) => {
     setFilterData(data);
   };

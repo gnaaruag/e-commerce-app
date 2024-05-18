@@ -22,7 +22,7 @@ const store = new mongosession({
 });
 
 const corsOptions = {
-    origin: 'http://localhost:5173', // Replace with your Vite development server's address
+    origin: process.env.CLIENT_URL,
   credentials: true
   };
   
@@ -44,7 +44,6 @@ app.use(
 
 
 
-// add routes
 
 app.use(cors(corsOptions));
 

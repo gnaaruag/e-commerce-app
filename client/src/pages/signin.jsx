@@ -20,14 +20,12 @@ function LoginForm() {
       const data = await response.json();
 
       if (response.ok) {
-        // Handle successful login
         toast.success(data.message);
         localStorage.setItem('token', data.token);
-        localStorage.setItem('userEmail', data.user.email); // Store user email
+        localStorage.setItem('userEmail', data.user.email); 
         localStorage.setItem('userName', data.user.username);
         navigate("/profile");
       } else {
-        // Handle login error
         toast.error(data.message);
       }
     } catch (error) {
