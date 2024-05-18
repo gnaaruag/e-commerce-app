@@ -1,0 +1,60 @@
+/* payment-indication.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.success {
+    border-left: 6px solid #4CAF50;
+}
+
+.failure {
+    border-left: 6px solid #F44336;
+}
+
+.icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.details {
+    font-size: 16px;
+    color: #666;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.success button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.failure button {
+    background-color: #F44336;
+    color: white;
+}

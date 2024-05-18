@@ -5,6 +5,10 @@ import "../App.css";
 import "../styles/product.css";
 import QuantitySelector from "../components/quantity-selector";
 import Loading from "../components/loading";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUB_KEY);
+
 import {
   EmailShareButton,
   TwitterShareButton,
@@ -38,7 +42,7 @@ const ProductItem = () => {
   const { productId } = useParams();
   const [quantity, setQuantity] = useState(1);
   const productUrl = window.location.href;
-
+  
   const handleCopyLink = () => {
     notifyCopy();
     navigator.clipboard.writeText(productUrl);
@@ -138,6 +142,39 @@ const ProductItem = () => {
       toast.error("Error adding item to cart");
     }
   };
+  const handleBuy = async () => {
+    const userEmail = localStorage.getItem("userEmail");
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_ROUTE}/create-checkout-session`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ products: [product], userEmail }), // Sending a single product as an array
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to create checkout session");
+      }
+
+      const { id: sessionId } = await response.json();
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({
+        sessionId,
+      });
+
+      if (error) {
+        toast.error(error.message);
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      toast.error("Error during checkout");
+    }
+  };
+
 
   return (
     <div>
@@ -190,7 +227,7 @@ const ProductItem = () => {
               </button>
               <button
                 className="buy ft-sec-reg txt-secondary"
-                onClick={() => console.log("Buy clicked")}
+                onClick={handleBuy}
               >
                 Buy
               </button>

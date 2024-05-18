@@ -61,10 +61,12 @@ app.get('/logout', (req,res) => {
 
 const auth = require('./routes/auth.route.js');
 const cart = require("./routes/cart.route.js")
+const pay = require("./routes/payment.route.js")
 
 
 app.use('/',auth);
 app.use('/', cart);
+app.use('/', pay);
 
 
 

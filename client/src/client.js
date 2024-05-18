@@ -1,20 +1,11 @@
-import {createClient} from '@sanity/client'
+import { createClient } from '@sanity/client'
+
+// Access the environment variable
+const projectId = import.meta.env.VITE_SANITY_PROJECT_ID
 
 export default createClient({
-	projectId:"xle18hlu",
-	dataset:"production",
-   apiVersion: "2024-03-11",
-   useCdn: true, 
+  projectId: projectId,
+  dataset: "production",
+  apiVersion: "2024-03-11",
+  useCdn: true, 
 })
-
-/**
- * import { createClient } from "@sanity/client"
-
-export const client = createClient({
-   projectId: "5lmtqlwi", 
-   dataset: "production", 
-   apiVersion: "2024-03-11",
-   // Set to `true` for production environments
-   useCdn: false, 
-})
- */

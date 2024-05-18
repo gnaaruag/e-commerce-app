@@ -7,6 +7,10 @@ import QuantitySelector from "../components/quantity-selector";
 import Loading from "../components/loading";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+// import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUB_KEY);
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -15,6 +19,7 @@ const Cart = () => {
   const email = localStorage.getItem("userEmail");
   const token = localStorage.getItem("token");
   console.log(cartItems);
+
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
@@ -175,6 +180,40 @@ const Cart = () => {
     }, 0);
   };
 
+  const handleCheckout = async () => {
+	const userEmail = localStorage.getItem("userEmail");
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_ROUTE}/create-checkout-session`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ products, userEmail }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to create checkout session");
+      }
+
+      const { id: sessionId } = await response.json();
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({
+        sessionId,
+      });
+
+      if (error) {
+        toast.error(error.message);
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      toast.error("Error during checkout");
+    }
+  };
+
+  
   return (
     <div className="ft-primary txt-primary">
       <Toaster />
@@ -227,7 +266,9 @@ const Cart = () => {
       {!loading && products.length > 0 && (
         <div className="cart-summary">
           <h3>Total: Rs. {calculateTotal()}</h3>
-          <button className="proceed-checkout ft-sec-reg">Proceed to Checkout</button>
+          <button className="proceed-checkout" onClick={handleCheckout}>
+            Proceed to Checkout
+          </button>
         </div>
       )}
     </div>
