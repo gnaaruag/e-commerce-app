@@ -2,9 +2,7 @@ const Cart = require("../models/cart.model");
 const { authMiddleware } = require("./auth.controller");
 const addItem = async (req, res) => {
   const { token, email, productId, quantity } = req.body;
-  console.log(token)
   const check = authMiddleware(token);
-	console.log(check)
   if (!check.valid) {
     return res.status(401).send("Access denied. No token provided.");
   }

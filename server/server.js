@@ -61,12 +61,12 @@ app.get('/logout', (req,res) => {
 const auth = require('./routes/auth.route.js');
 const cart = require("./routes/cart.route.js")
 const pay = require("./routes/payment.route.js")
-
+const order = require("./routes/order.route.js")
 
 app.use('/',auth);
 app.use('/', cart);
 app.use('/', pay);
-
+app.use('/', order)
 
 
 const PORT = process.env.PORT || 8080;

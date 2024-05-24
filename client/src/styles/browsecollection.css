@@ -1,6 +1,7 @@
 .coll-comp {
 	display: flex;
 	gap: 2em;
+	color: black;
   }
   
   .col1,
@@ -42,8 +43,8 @@
   }
   
   .b-item img {
-	max-width: 25em; /* Adjust the maximum width of the image */
-	max-height: 30em; /* Adjust the maximum height of the image */
+	min-width: 25em; /* Adjust the maximum width of the image */
+	min-height: 30em; /* Adjust the maximum height of the image */
 	border-radius: 2em;
 	transition: transform 0.3s;
   }
@@ -53,7 +54,7 @@
   }
 
   
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 600px) {
 	.coll-comp {
 		flex-direction: column;
 	}

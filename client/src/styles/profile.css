@@ -15,14 +15,13 @@
 
 }
 
-.prfile h1 {
-	margin-left: 6em; 
+
+.prfile {
+	text-align: center;
 }
 
 @media only screen and (max-width: 750px) {
-	.prfile h1 {
-		margin-left: 1em; 
-	}
+
 
 	.profile-container {
 		flex-direction: column;

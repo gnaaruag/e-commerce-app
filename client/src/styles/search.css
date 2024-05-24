@@ -9,13 +9,24 @@
 	font-size: 2em;
 }
 
+.search-button {
+	font-size: 1.5em;
+}
+
+.search-button:hover {
+}
+
 .s-card input {
 	font-size: 2em;
 	min-width: 40%;
 	border: 1px solid #ec8383;
 	border-radius: 0.15em  ;
 	padding: 0.25em;
-	margin-bottom: 5em;
+}
+
+
+.search-input-container {
+	margin-bottom: 5em
 }
 
 
