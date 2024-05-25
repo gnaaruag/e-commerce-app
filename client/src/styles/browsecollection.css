@@ -1,11 +1,11 @@
 .coll-comp {
 	display: flex;
-	gap: 2em;
+	gap: 1em;
 	color: black;
   }
   
-  .col1,
-  .col2 {
+  .col1-coll,
+  .col2-coll {
 	flex: 1; /* Both columns take equal parts of the available space */
 	display: flex;
 	flex-direction: column;
@@ -37,7 +37,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 3px solid #fef5f5;
+	border: 1px solid #c1b0b0;
 	padding: 0.5em;
 	border-radius: 1em;
   }
@@ -54,12 +54,22 @@
   }
 
   
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
 	.coll-comp {
 		flex-direction: column;
 	}
 	.b-item img {
 		max-width: 15em; /* Adjust the maximum width of the image */
 		max-height: 20em; /* Adjust the maximum height of the image */
+	  }
+}
+
+@media only screen and (max-width: 425px) {
+
+	.b-item img {
+		max-width: 15em; /* Adjust the maximum width of the image */
+		max-height: 18em; /* Adjust the maximum height of the image */
+		min-height: 18em; /* Adjust the maximum height of the image */
+		min-width: 15em; /* Adjust the maximum width of the image */
 	  }
 }

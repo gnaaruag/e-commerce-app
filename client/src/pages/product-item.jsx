@@ -141,7 +141,7 @@ const ProductItem = () => {
     }
   };
   const handleBuy = async () => {
-    const userEmail = localStorage.getItem("userEmail");
+    const userEmail = localStorage.getItem("userEmail") || "lorem@ipsum.com";
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_ROUTE}/create-checkout-session`,

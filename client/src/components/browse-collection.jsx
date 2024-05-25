@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa6";
 function BrowseCollection() {
   return (
     <div className="coll-comp">
-      <div className="col1">
+      <div className="col1-coll">
         <div className="b-item bi1">
           <a href="/collections/bridal">
             <img src="/Lehenga_saree.webp" alt="" />
@@ -15,7 +15,7 @@ function BrowseCollection() {
           </a>
         </div>
       </div>
-      <div className="col2 ">
+      <div className="col2-coll ">
         <div className="b-item ">
           <a href="/collections/partywear">
             <img src="/partywear.webp" alt="" />

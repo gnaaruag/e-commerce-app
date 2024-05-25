@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
@@ -26,16 +26,17 @@ function LoginForm() {
         localStorage.setItem('userName', data.user.username);
         navigate("/profile");
       } else {
-        toast.error(data.message);
+        toast.error("Invalid email or password");
       }
     } catch (error) {
+      toast.error('Invalid email or password');
       console.error('Error:', error);
-      toast.error('An error occurred. Please try again.');
     }
   };
 
   return (
     <div className="container">
+      <Toaster/>
       <h2 className='header txt-primary ft-primary'>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
