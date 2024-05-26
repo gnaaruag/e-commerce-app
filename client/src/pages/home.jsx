@@ -33,7 +33,7 @@ function Home() {
       </div>
       <div className="txt-primary ft-primary section">
         <h3 className="home-sec-head">Browse our Collections</h3>
-        <p className="subhead">
+        <p className="subhead-bc">
           {
             "Overwhelmed by our options? Don't know where to begin? Start with our curated collections!"
           }

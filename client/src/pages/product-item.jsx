@@ -82,6 +82,8 @@ const ProductItem = () => {
       productDescription
     }`;
 
+    
+
     const fetchProduct = async () => {
       try {
         const data = await createClient.fetch(groqQuery);

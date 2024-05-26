@@ -47,10 +47,9 @@ function PopularThisMonth() {
         console.error("Error fetching popular products:", error);
       }
     };
-
     fetchPopularProducts();
   }, []);
-
+  
   return (
     <div className="productscontainer">
       <div className="productitem">
@@ -59,7 +58,7 @@ function PopularThisMonth() {
             <img src={product.mainImage} alt={product.productName} />
             <div className="prod-desc">
               <h3>{product.productName}</h3>
-              <a href={"/products/" + product.productId}>Buy Now <FaArrowRight /> </a>
+              <a href={"/product/" + product.productId.current}>Buy Now <FaArrowRight /> </a>
             </div>
           </div>
         ))}

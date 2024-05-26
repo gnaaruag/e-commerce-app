@@ -18,6 +18,9 @@ import Cart from "../pages/cart";
 import ProtectedRoute from "./ProtectedRoute";
 import PaymentSuccess from "../pages/success";
 import PaymentFailure from "../pages/failure";
+import Bridal from "../pages/collections/bridal";
+import Everyday from "../pages/collections/everyday";
+import Party from "../pages/collections/party";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +98,18 @@ const router = createBrowserRouter([
       {
         path: "gift-sets",
         element: <GiftSet />,
+      },
+      {
+        path: "bridal",
+        element: <Bridal />,
+      },
+      {
+        path: "everyday",
+        element: <Everyday />,
+      },
+      {
+        path: "partywear",
+        element: <Party />,
       },
     ],
   },

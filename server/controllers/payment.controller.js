@@ -30,13 +30,14 @@ const checkOut = async (req, res) => {
         enabled: true,
       },
       success_url: `${process.env.CLIENT_URL}/success`,
-      cancel_url: `${process.env.CLIENT_URL}/cancel`,
+      cancel_url: `${process.env.CLIENT_URL}/failure`,
     });
 
     for (const product of products) {
+      console.log(product)
       const orderItem = new Order({
         userEmail: userEmail,
-        productId: product.productId.toString(),
+        productId: product.productId.current.toString(),
         quantity: product.quantity,
       });
 

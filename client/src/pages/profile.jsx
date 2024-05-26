@@ -5,14 +5,15 @@ import "../styles/profile.css";
 import checkUserValidity from "../util/auth-helper";
 import sessionClose from "../util/sessionClose";
 import { CiUser } from "react-icons/ci";
-import sanityClient from '../client';
+import createClient from "../client";
+import toast, { Toaster } from "react-hot-toast";
+import Loading from "../components/loading";
 
-
-
-function Profile() {
+const Profile = () => {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
-  const [products, setProducts] = useState({});
+  const [loading, setLoading] = useState(true);
+  const email = localStorage.getItem("userEmail");
 
   useEffect(() => {
     const checkToken = async () => {
@@ -30,38 +31,60 @@ function Profile() {
     const fetchOrders = async () => {
       try {
         const userEmail = localStorage.getItem("userEmail");
-        const response = await fetch(`${import.meta.env.VITE_API_ROUTE}/orders`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email: userEmail })
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API_ROUTE}/orders`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: userEmail }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch orders");
+        }
+
         const data = await response.json();
         setOrders(data.orders);
 
-        // Fetch product details for each order
-        const productIds = data.orders.map(order => order.productId);
-        const query = `*[_type == "product" && productId in $productIds] {
-          _id,
-          productName,
-          mainImage,
-          altImage0,
-          altImage1,
-          altImage2,
-          altImage3,
-          price,
-          productCategory,
-          productDescription
-        }`;
-        const products = await sanityClient.fetch(query, { productIds });
-        const productMap = products.reduce((acc, product) => {
-          acc[product._id] = product;
-          return acc;
-        }, {});
-        setProducts(productMap);
+        const orderDetails = await Promise.all(
+          data.orders.map(async (order) => {
+            const groqQuery = `*[_type == 'product' && productId.current == "${order.productId}"][0] {
+              _id,
+              productName,
+              mainImage {
+                asset-> {
+                  url
+                }
+              },
+              price,
+              productDescription,
+              productId
+            }`;
+
+            try {
+              const product = await createClient.fetch(groqQuery);
+              return {
+                ...order,
+                ...product,
+              };
+            } catch (error) {
+              console.error(
+                `Error fetching details for product ${order.productId}:`,
+                error
+              );
+              return { ...order };
+            }
+          })
+        );
+
+        setOrders(orderDetails);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching orders:", error);
+        toast.error("Error fetching orders");
       }
     };
 
@@ -74,11 +97,11 @@ function Profile() {
     navigate("/");
   };
 
-  const email = localStorage.getItem("userEmail");
   const username = localStorage.getItem("userName");
 
   return (
     <div className="ft-primary txt-primary">
+      <Toaster />
       <div className="profile">
         <h1 className="prfile">Welcome to your profile!</h1>
         <div className="profile-container">
@@ -92,17 +115,33 @@ function Profile() {
               Logout
             </button>
             <h3>Order History</h3>
-            {orders.length === 0 ? (
+            {loading ? (
+              
+              <Loading/>
+            ) : orders.length === 0 ? (
               <p>You have not placed any orders yet</p>
             ) : (
-              <ul>
-                {orders.map(order => (
-                  <li key={order._id}>
-                    <h4>Order ID: {order._id}</h4>
-                    <p>Product: {products[order.productId]?.productName || "Loading..."}</p>
-                    <p>Quantity: {order.quantity}</p>
-                    <p>Order Date: {new Date(order.orderDate).toLocaleDateString()}</p>
-                    <img src={products[order.productId]?.mainImage.asset.url} alt={products[order.productId]?.productName} />
+              <ul className="product-list txt-secondary">
+                {orders.map((order) => (
+                  <li key={order._id} className="txt-secondary">
+                    <a href={"/product/" + order.productId.current}>
+                      <div className="single-listing">
+                        {order.mainImage && (
+                          <img
+                            src={order.mainImage.asset.url}
+                            alt={order.productName}
+                          />
+                        )}
+                      </div>
+                      <div>
+                        <p className="txt-secondary href">{order.productName || "Loading..."}</p>
+                        <p className="txt-secondary">Quantity: {order.quantity}</p>
+                        <p className="txt-secondary">
+                          Order Date:{" "}
+                          {new Date(order.orderDate).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -117,6 +156,6 @@ function Profile() {
       </div>
     </div>
   );
-}
+};
 
 export default Profile;
