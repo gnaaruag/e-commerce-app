@@ -1,6 +1,6 @@
 .coll-comp {
 	display: flex;
-	gap: 1em;
+	gap: 4em;
 	color: black;
   }
   
@@ -57,6 +57,7 @@
   @media only screen and (max-width: 1024px) {
 	.coll-comp {
 		flex-direction: column;
+		gap: 1em;
 	}
 	.b-item img {
 		max-width: 15em; /* Adjust the maximum width of the image */

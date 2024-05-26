@@ -45,7 +45,7 @@ function Home() {
         <PopularThisMonth/>
       </div>
       <div className="txt-primary ft-primary section ">
-        <h2 className="">Explore our Exclusive Collection</h2>
+        <h2 className="exchead">Explore our Exclusive Collection</h2>
         <ExclusiveCollection/>
       </div>
     </>
