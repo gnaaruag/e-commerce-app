@@ -66,11 +66,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/success",
-        element: <ProtectedRoute><PaymentSuccess/></ProtectedRoute>,
+        element: <PaymentSuccess/>,
       },
       {
         path: "/failure",
-        element: <ProtectedRoute><PaymentFailure/></ProtectedRoute>,
+        element: <PaymentFailure/>,
       },
     ],
   },

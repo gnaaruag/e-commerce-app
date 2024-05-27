@@ -106,7 +106,7 @@ const ProductItem = () => {
     const token = localStorage.getItem("token");
 
     if (!email) {
-      toast.error("User email not found in localStorage");
+      toast.error("Signup in the profile tab to add items to cart");
       return;
     }
 

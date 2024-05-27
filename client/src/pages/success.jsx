@@ -14,7 +14,7 @@ const PaymentSuccess = () => {
         <div className="container success ft-sec-reg">
             <div className="icon">✔️</div>
             <div className="message">Payment Successful</div>
-            <div className="details">Thank you for your payment. Your transaction has been completed successfully.</div>
+            <div className="details">Thank you for your payment. Your transaction has been completed successfully. We will send you a confirmation email soon.</div>
             <button onClick={handleRedirect}>Go to Profile</button>
         </div>
     );
