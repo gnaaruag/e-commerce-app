@@ -37,7 +37,7 @@ const checkOut = async (req, res) => {
       console.log(product)
       const orderItem = new Order({
         userEmail: userEmail,
-        productId: product.productId.current.toString(),
+        productId: product.productId.toString() ,
         quantity: product.quantity,
       });
 

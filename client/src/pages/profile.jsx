@@ -48,10 +48,10 @@ const Profile = () => {
 
         const data = await response.json();
         setOrders(data.orders);
-
+        console.log(orders)
         const orderDetails = await Promise.all(
           data.orders.map(async (order) => {
-            const groqQuery = `*[_type == 'product' && productId.current == "${order.productId}"][0] {
+            const groqQuery = `*[_type == 'product' && productId.current == "${order.productId || order.productId.current}"][0] {
               _id,
               productName,
               mainImage {
@@ -81,6 +81,7 @@ const Profile = () => {
         );
 
         setOrders(orderDetails);
+        console.log(orderDetails)
         setLoading(false);
       } catch (error) {
         console.error("Error fetching orders:", error);

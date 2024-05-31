@@ -87,6 +87,7 @@ const ProductItem = () => {
     const fetchProduct = async () => {
       try {
         const data = await createClient.fetch(groqQuery);
+        console.log(data)
         setProduct(data);
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -145,6 +146,9 @@ const ProductItem = () => {
   const handleBuy = async () => {
     const userEmail = localStorage.getItem("userEmail") || "lorem@ipsum.com";
     try {
+      console.log(product)
+      const payload = product
+      payload.productId = productId
       const response = await fetch(
         `${import.meta.env.VITE_API_ROUTE}/create-checkout-session`,
         {
@@ -152,7 +156,7 @@ const ProductItem = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ products: [product], userEmail }),  
+          body: JSON.stringify({ products: [payload], userEmail }),  
         }
       );
 
