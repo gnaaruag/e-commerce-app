@@ -4,7 +4,6 @@ import Card from "../components/category-card";
 import BrowseCollection from "../components/browse-collection";
 import PopularThisMonth from "../components/popular-this-month";
 import ExclusiveCollection from "../components/exclusive-collection";
-import ReelTemplate from "../components/reel-template";
 function Home() {
   return (
     <>
@@ -48,7 +47,6 @@ function Home() {
       <div className="txt-primary ft-primary section ">
         <h2 className="exchead">Explore our Exclusive Collection</h2>
         <ExclusiveCollection/>
-        <ReelTemplate url="https://www.instagram.com/reel/C7P1QDhvL9p/" />
 
       </div>
     </>
